@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Link, NavLink, Route } from "react-router-dom";
-import DogList from "./Doglist";
-import DogDetails from "./DogDetails";
+import Routes from "./Routes";
 import Navbar from "./Navbar";
 
 import "./App.css";
@@ -43,24 +41,12 @@ class App extends Component {
   };
 
   render() {
-    const getDog = (routeProps) => {
-      let name = routeProps.match.params.name;
-      let currentDog = this.props.dogs.find(
-        (dog) => dog.name.toLowerCase() === name.toLowerCase()
-      );
-      return <DogDetails {...routeProps} dog={currentDog} />;
-    };
     return (
       <div className="App">
         <Navbar dogs={this.props.dogs} />
-        <Switch>
-          <Route
-            exact
-            path="/dogs/"
-            render={() => <DogList dogs={this.props.dogs} />}
-          />
-          <Route exact path="/dogs/:name" render={getDog} />
-        </Switch>
+        <div className="container">
+          <Routes dogs={this.props.dogs} />
+        </div>
       </div>
     );
   }
