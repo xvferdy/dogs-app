@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Switch, Link, NavLink, Route } from "react-router-dom";
 import DogList from "./Doglist";
 import DogDetails from "./DogDetails";
+import Navbar from "./Navbar";
 
 import "./App.css";
 
@@ -51,6 +52,7 @@ class App extends Component {
     };
     return (
       <div className="App">
+        <Navbar dogs={this.props.dogs} />
         <Switch>
           <Route
             exact
